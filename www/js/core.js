@@ -510,7 +510,6 @@ function setViewerLoading() {
 }
 
 function setCdaXml(xml) {
-  console.log("setting CDA");
   cdaxml = xml;
   new Transformation().setXml(cdaxml).setXslt("cda.xsl").transform("viewcda");
   setViewerVisible();
