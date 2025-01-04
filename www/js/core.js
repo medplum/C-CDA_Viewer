@@ -479,23 +479,23 @@ function getCellValue(row, index) {
   return $(row).children("td").eq(index).html();
 }
 
-var xmload;
-function loadtextarea(fname) {
-  xmload = new XMLHttpRequest();
-  xmload.onreadystatechange = loaded;
+function loadCcdaXml(url) {
+  const xmload = new XMLHttpRequest();
+  xmload.onreadystatechange = () => {
+    if (xmload.readyState !== 4) {
+      return;
+    }
+    cdaxml = xmload.responseText;
+    new Transformation().setXml(cdaxml).setXslt("cda.xsl").transform("viewcda");
+    setViewerVisible();
+  };
   try {
-    xmload.open("GET", fname, true);
+    xmload.open("GET", url, true);
   } catch (e) {
     alert(e);
   }
   xmload.send(null);
 }
-var loaded = function () {
-  if (xmload.readyState == 4) {
-    $("#cdaxml").val(xmload.responseText);
-    //$('#transform').get(0).click()
-  }
-};
 
 function setViewerVisible() {
   $("#viewcda").show();
@@ -507,10 +507,4 @@ function setViewerLoading() {
   $("#loading").show();
   $(".spinner").show().addClass("spinning");
   $("#viewcda").hide();
-}
-
-function setCdaXml(xml) {
-  cdaxml = xml;
-  new Transformation().setXml(cdaxml).setXslt("cda.xsl").transform("viewcda");
-  setViewerVisible();
 }
