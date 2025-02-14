@@ -479,15 +479,19 @@ function getCellValue(row, index) {
   return $(row).children("td").eq(index).html();
 }
 
+function setCurrentCcdaXml(xml) {
+  cdaxml = xml;
+  new Transformation().setXml(cdaxml).setXslt("cda.xsl").transform("viewcda");
+  setViewerVisible();
+}
+
 function loadCcdaXml(url) {
   const xmload = new XMLHttpRequest();
   xmload.onreadystatechange = () => {
     if (xmload.readyState !== 4) {
       return;
     }
-    cdaxml = xmload.responseText;
-    new Transformation().setXml(cdaxml).setXslt("cda.xsl").transform("viewcda");
-    setViewerVisible();
+    setCurrentCcdaXml(xmload.responseText);
   };
   try {
     xmload.open("GET", url, true);
