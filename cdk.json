@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/medplum-ccda-viewer-deploy.ts",
+  "app": "npx tsx bin/medplum-ccda-viewer-deploy.ts",
   "watch": {
     "include": ["**"],
     "exclude": [
