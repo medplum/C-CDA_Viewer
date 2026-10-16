@@ -1021,7 +1021,7 @@
                   </tr>
 					<tr>
 						<td colspan="4">
-							<span class="pure-button" style="padding-top:0;padding-bottom:0" onclick="$('tr.hide').fadeToggle();$('#cdabody').packery()">Patient Detail</span>
+							<span class="pure-button patientdetail" style="padding-top:0;padding-bottom:0">Patient Detail</span>
 						</td>
 					</tr>
                   <xsl:if test="n1:patient/n1:raceCode | (n1:patient/n1:ethnicGroupCode)">

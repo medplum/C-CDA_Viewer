@@ -212,6 +212,15 @@ function init() {
     movedown(section, li, true);
   });
 
+  // Bound here rather than as an inline onclick in cda.xsl so the page can run
+  // under script-src 'self' (inline handlers would need 'unsafe-hashes').
+  $(".patientdetail")
+    .off("click")
+    .click(function () {
+      $("tr.hide").fadeToggle();
+      $("#cdabody").packery();
+    });
+
   $(".hideshow").click(function () {
     var up = $(this).find("i").hasClass("fa-compress");
 

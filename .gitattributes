@@ -15,3 +15,9 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Vendored font binaries - never line-ending normalize (see www/fonts/)
+*.eot   binary
+*.ttf   binary
+*.woff  binary
+*.woff2 binary

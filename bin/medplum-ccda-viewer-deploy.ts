@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import * as cdk from "aws-cdk-lib";
 import "source-map-support/register";
 import { MedplumCcdaViewerStack } from "../lib/medplum-ccda-viewer-stack";
@@ -19,6 +18,5 @@ new MedplumCcdaViewerStack(app, "MedplumCcdaViewerStack", {
     account: process.env.AWS_ACCOUNT,
     region: process.env.AWS_REGION || "us-east-1",
   },
-
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
